@@ -19,6 +19,17 @@ let entriesByDate = loadEntries();
 let selectedDate = toISODate(new Date());
 let currentMonthDate = new Date();
 currentMonthDate.setDate(1);
+const hasJournalUI =
+  calendarGrid &&
+  monthLabel &&
+  prevMonthBtn &&
+  nextMonthBtn &&
+  journalForm &&
+  entryDateInput &&
+  entryTitleInput &&
+  entryTextInput &&
+  entriesList &&
+  selectedDateLabel;
 
 tabButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -32,56 +43,58 @@ tabButtons.forEach((btn) => {
   });
 });
 
-prevMonthBtn.addEventListener("click", () => {
-  currentMonthDate = new Date(
-    currentMonthDate.getFullYear(),
-    currentMonthDate.getMonth() - 1,
-    1
-  );
-  renderCalendar();
-});
+if (hasJournalUI) {
+  prevMonthBtn.addEventListener("click", () => {
+    currentMonthDate = new Date(
+      currentMonthDate.getFullYear(),
+      currentMonthDate.getMonth() - 1,
+      1
+    );
+    renderCalendar();
+  });
 
-nextMonthBtn.addEventListener("click", () => {
-  currentMonthDate = new Date(
-    currentMonthDate.getFullYear(),
-    currentMonthDate.getMonth() + 1,
-    1
-  );
-  renderCalendar();
-});
+  nextMonthBtn.addEventListener("click", () => {
+    currentMonthDate = new Date(
+      currentMonthDate.getFullYear(),
+      currentMonthDate.getMonth() + 1,
+      1
+    );
+    renderCalendar();
+  });
 
-journalForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+  journalForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  const date = entryDateInput.value;
-  const title = entryTitleInput.value.trim();
-  const text = entryTextInput.value.trim();
+    const date = entryDateInput.value;
+    const title = entryTitleInput.value.trim();
+    const text = entryTextInput.value.trim();
 
-  if (!date || !title || !text) {
-    return;
-  }
+    if (!date || !title || !text) {
+      return;
+    }
 
-  const nextEntry = {
-    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-    title,
-    text,
-    createdAt: new Date().toISOString(),
-  };
+    const nextEntry = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      title,
+      text,
+      createdAt: new Date().toISOString(),
+    };
 
-  if (!entriesByDate[date]) {
-    entriesByDate[date] = [];
-  }
-  entriesByDate[date].unshift(nextEntry);
+    if (!entriesByDate[date]) {
+      entriesByDate[date] = [];
+    }
+    entriesByDate[date].unshift(nextEntry);
 
-  saveEntries(entriesByDate);
+    saveEntries(entriesByDate);
 
-  selectedDate = date;
-  entryTitleInput.value = "";
-  entryTextInput.value = "";
+    selectedDate = date;
+    entryTitleInput.value = "";
+    entryTextInput.value = "";
 
-  renderCalendar();
-  renderEntriesForSelectedDate();
-});
+    renderCalendar();
+    renderEntriesForSelectedDate();
+  });
+}
 
 function loadEntries() {
   try {
@@ -215,6 +228,8 @@ function renderEntriesForSelectedDate() {
   });
 }
 
-entryDateInput.value = selectedDate;
-renderCalendar();
-renderEntriesForSelectedDate();
+if (hasJournalUI) {
+  entryDateInput.value = selectedDate;
+  renderCalendar();
+  renderEntriesForSelectedDate();
+}
