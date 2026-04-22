@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goutham | Vintage Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="paper-texture"></div>
+    <main class="app-shell">
+      <aside class="left-nav">
+        <h1>Goutham's Corner</h1>
+        <p class="tagline">old school internet notebook</p>
+        <nav aria-label="Website sections">
+          <button class="side-tab-btn active" data-tab="home">Home</button>
+          <button class="side-tab-btn" data-tab="portfolio">Portfolio</button>
+          <button class="side-tab-btn" data-tab="blogs">Blogs</button>
+          <button class="side-tab-btn" data-tab="books">Books</button>
+          <button class="side-tab-btn" data-tab="achievements">Achievements</button>
+          <button class="side-tab-btn" data-tab="about">About</button>
+          <button class="side-tab-btn" data-tab="journal">Journal</button>
+          <button class="side-tab-btn" data-tab="contact">Contact</button>
+        </nav>
+      </aside>
+
+      <section class="main-view">
+        <article id="home" class="tab-content active">
+          <div class="hero-banner">
+            <div class="hero-image" role="img" aria-label="Forest painting style banner image"></div>
+            <div class="hero-copy">
+              <h2>Welcome to my raw old-school website</h2>
+              <p>Simple sections. Personal work. Journals linked to dates.</p>
+            </div>
+          </div>
+          <section class="card">
+            <h3>Site Notes</h3>
+            <p>
+              This page is intentionally simple and raw. Navigate from the left
+              sidebar like classic web directories.
+            </p>
+          </section>
+        </article>
+
+        <article id="portfolio" class="tab-content">
+          <section class="card">
+            <h3>Portfolio Projects</h3>
+            <div class="projects-grid">
+              <article class="project-item">
+                <h4>Project One</h4>
+                <p>Placeholder for project details, stack, and impact.</p>
+              </article>
+              <article class="project-item">
+                <h4>Project Two</h4>
+                <p>Placeholder for project details, stack, and impact.</p>
+              </article>
+              <article class="project-item">
+                <h4>Project Three</h4>
+                <p>Placeholder for project details, stack, and impact.</p>
+              </article>
+            </div>
+          </section>
+        </article>
+
+        <article id="blogs" class="tab-content">
+          <section class="card">
+            <h3>Blogs</h3>
+            <p>Post 1: Thoughts on building useful products.</p>
+            <p>Post 2: Notes from learning and experiments.</p>
+            <p>Post 3: Weekly reflection and roadmap.</p>
+          </section>
+        </article>
+
+        <article id="books" class="tab-content">
+          <section class="card">
+            <h3>Bookshelf</h3>
+            <p>Currently Reading: Add your active reads here.</p>
+            <p>Favorites: Add books that shaped your thinking.</p>
+            <p>Notes: Link insights from books to your projects.</p>
+          </section>
+        </article>
+
+        <article id="achievements" class="tab-content">
+          <section class="card">
+            <h3>Achievements</h3>
+            <p>Milestone 1: Placeholder achievement.</p>
+            <p>Milestone 2: Placeholder achievement.</p>
+            <p>Milestone 3: Placeholder achievement.</p>
+          </section>
+        </article>
+
+        <article id="about" class="tab-content">
+          <section class="card">
+            <h3>About</h3>
+            <p>
+              Write your personal introduction, interests, and what you are
+              currently building.
+            </p>
+          </section>
+        </article>
+
+        <article id="journal" class="tab-content">
+          <div class="journal-layout">
+            <aside class="calendar-panel">
+              <h3>Calendar</h3>
+              <div class="calendar-header">
+                <button id="prevMonth" aria-label="Previous month">&lt;</button>
+                <p id="calendarMonthLabel"></p>
+                <button id="nextMonth" aria-label="Next month">&gt;</button>
+              </div>
+              <div class="calendar-grid" id="calendarGrid"></div>
+              <div class="legend">
+                <p><span class="legend-dot has-entry"></span> Journal entry exists</p>
+                <p><span class="legend-dot selected-day"></span> Selected day</p>
+              </div>
+            </aside>
+
+            <div>
+              <section class="card journal-card">
+                <h3>Digital Journal</h3>
+                <p class="muted">Write and attach each entry to a date.</p>
+                <form id="journalForm">
+                  <label for="entryDate">Date</label>
+                  <input type="date" id="entryDate" required />
+
+                  <label for="entryTitle">Title</label>
+                  <input
+                    type="text"
+                    id="entryTitle"
+                    placeholder="A reflective title..."
+                    required
+                  />
+
+                  <label for="entryText">Entry</label>
+                  <textarea
+                    id="entryText"
+                    rows="7"
+                    placeholder="Write your digital journal entry..."
+                    required
+                  ></textarea>
+
+                  <button type="submit">Save Entry</button>
+                </form>
+              </section>
+
+              <section class="card">
+                <h3>Entries for Selected Date</h3>
+                <p id="selectedDateLabel" class="muted"></p>
+                <div id="entriesList" class="entries-list"></div>
+              </section>
+            </div>
+          </div>
+        </article>
+
+        <article id="contact" class="tab-content">
+          <section class="card">
+            <h3>Contact</h3>
+            <p>Email: yourname@example.com</p>
+            <p>GitHub: your profile</p>
+            <p>LinkedIn: your profile</p>
+          </section>
+        </article>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
