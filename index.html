@@ -25,7 +25,6 @@
           <button class="side-tab-btn" data-tab="books">Books</button>
           <button class="side-tab-btn" data-tab="achievements">Achievements</button>
           <button class="side-tab-btn" data-tab="about">About</button>
-          <button class="side-tab-btn" data-tab="journal">Journal</button>
           <button class="side-tab-btn" data-tab="contact">Contact</button>
         </nav>
       </aside>
@@ -103,59 +102,6 @@
               currently building.
             </p>
           </section>
-        </article>
-
-        <article id="journal" class="tab-content">
-          <div class="journal-layout">
-            <aside class="calendar-panel">
-              <h3>Calendar</h3>
-              <div class="calendar-header">
-                <button id="prevMonth" aria-label="Previous month">&lt;</button>
-                <p id="calendarMonthLabel"></p>
-                <button id="nextMonth" aria-label="Next month">&gt;</button>
-              </div>
-              <div class="calendar-grid" id="calendarGrid"></div>
-              <div class="legend">
-                <p><span class="legend-dot has-entry"></span> Journal entry exists</p>
-                <p><span class="legend-dot selected-day"></span> Selected day</p>
-              </div>
-            </aside>
-
-            <div>
-              <section class="card journal-card">
-                <h3>Digital Journal</h3>
-                <p class="muted">Write and attach each entry to a date.</p>
-                <form id="journalForm">
-                  <label for="entryDate">Date</label>
-                  <input type="date" id="entryDate" required />
-
-                  <label for="entryTitle">Title</label>
-                  <input
-                    type="text"
-                    id="entryTitle"
-                    placeholder="A reflective title..."
-                    required
-                  />
-
-                  <label for="entryText">Entry</label>
-                  <textarea
-                    id="entryText"
-                    rows="7"
-                    placeholder="Write your digital journal entry..."
-                    required
-                  ></textarea>
-
-                  <button type="submit">Save Entry</button>
-                </form>
-              </section>
-
-              <section class="card">
-                <h3>Entries for Selected Date</h3>
-                <p id="selectedDateLabel" class="muted"></p>
-                <div id="entriesList" class="entries-list"></div>
-              </section>
-            </div>
-          </div>
         </article>
 
         <article id="contact" class="tab-content">
