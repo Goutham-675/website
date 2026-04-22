@@ -1,0 +1,369 @@
+:root {
+  --paper: #fdf7e8;
+  --paper-dark: #f7efd9;
+  --ink: #4e4433;
+  --ink-soft: #6c5f49;
+  --accent: #d1b46f;
+  --accent-strong: #b99a52;
+  --line: #e5d8b8;
+  --entry-dot: #9d8050;
+  --shadow: rgba(109, 93, 62, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  color: var(--ink);
+  background: linear-gradient(180deg, #fffdf8 0%, #fbf5e8 100%);
+  min-height: 100vh;
+}
+
+.paper-texture {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.1;
+  background-image: radial-gradient(#d9ceb3 0.5px, transparent 0.5px);
+  background-size: 8px 8px;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.left-nav {
+  border-right: 1px solid var(--line);
+  background: var(--paper);
+  padding: 1rem 0.8rem;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+}
+
+.left-nav h1 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.7rem;
+}
+
+.tagline {
+  margin: 0.2rem 0 0.9rem;
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 0.6rem;
+}
+
+.left-nav nav {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.side-tab-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  text-align: left;
+  padding: 0.45rem 0.55rem;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.side-tab-btn.active {
+  background: #f8f1df;
+  border-left: 2px solid var(--accent-strong);
+  font-weight: 600;
+}
+
+.main-view {
+  padding: 1rem;
+}
+
+.calendar-panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 0.9rem;
+  align-self: start;
+  position: sticky;
+  top: 12px;
+}
+
+.calendar-panel h3 {
+  margin: 0 0 0.75rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.45rem;
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: 34px 1fr 34px;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-header button {
+  border: 1px solid var(--line);
+  background: transparent;
+  border-radius: 0;
+  height: 32px;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: none;
+}
+
+#calendarMonthLabel {
+  text-align: center;
+  margin: 0;
+  font-weight: 600;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.3rem;
+}
+
+.weekday {
+  font-size: 0.72rem;
+  text-align: center;
+  font-weight: 700;
+  color: var(--ink-soft);
+  padding: 0.2rem 0;
+}
+
+.day {
+  border: 1px solid var(--line);
+  background: #fffaf0;
+  color: var(--ink);
+  border-radius: 2px;
+  min-height: 34px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.day:hover {
+  background: #f8f0de;
+}
+
+.day.other-month {
+  opacity: 0.45;
+}
+
+.day.has-entry::after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--entry-dot);
+}
+
+.day.selected {
+  outline: 2px solid var(--accent);
+  background: #f4ead2;
+}
+
+.legend {
+  margin-top: 0.7rem;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+}
+
+.legend p {
+  margin: 0.35rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot.has-entry {
+  background: var(--entry-dot);
+}
+
+.legend-dot.selected-day {
+  background: #f4ead2;
+  outline: 1px solid var(--accent);
+}
+
+.content {
+  min-width: 0;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.hero-banner {
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.hero-image {
+  height: 230px;
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(252, 243, 220, 0.35),
+      rgba(216, 191, 135, 0.28)
+    ),
+    url("assets/banner.png");
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.8) contrast(0.95);
+}
+
+.hero-copy {
+  padding: 1rem;
+}
+
+.hero-copy h1 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+}
+
+.hero-copy p {
+  margin: 0.5rem 0 0;
+  color: var(--ink-soft);
+}
+
+.card {
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  padding: 1rem;
+  background: var(--paper);
+}
+
+.card h3 {
+  margin-top: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.6rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.7rem;
+}
+
+.project-item {
+  border: 1px solid var(--line);
+  padding: 0.8rem;
+  background: #fff9ec;
+}
+
+.project-item h4 {
+  margin-top: 0;
+}
+
+.muted {
+  color: var(--ink-soft);
+}
+
+#journalForm {
+  display: grid;
+  gap: 0.55rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: #fffdf7;
+  color: var(--ink);
+  padding: 0.55rem;
+  font-family: inherit;
+}
+
+button[type="submit"] {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 0;
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+  justify-self: start;
+  font-weight: 500;
+  box-shadow: none;
+}
+
+.entries-list {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.entry {
+  border: 1px solid var(--line);
+  padding: 0.65rem;
+  background: #fffaf0;
+}
+
+.entry h4 {
+  margin: 0;
+}
+
+.entry p {
+  margin: 0.3rem 0 0;
+  white-space: pre-wrap;
+}
+
+.empty-entries {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.journal-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 940px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .left-nav {
+    position: static;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .calendar-panel {
+    position: static;
+  }
+
+  .journal-layout {
+    grid-template-columns: 1fr;
+  }
+}
